@@ -1,11 +1,11 @@
 package test.java.lt.mif.vu.ood;
 
+import main.java.lt.mif.vu.ood.domain.Party;
 import main.java.lt.mif.vu.ood.exceptions.EmailMissingEtaSignException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidEmailCharsException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidEmailDomainException;
 import main.java.lt.mif.vu.ood.validations.EmailValidator;
 import main.java.lt.mif.vu.ood.validations.EmailValidatorImpl;
-import main.ood.domain.Party;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

@@ -1,11 +1,11 @@
 package test.java.lt.mif.vu.ood;
 
+import main.java.lt.mif.vu.ood.domain.Party;
 import main.java.lt.mif.vu.ood.exceptions.InvalidPasswordCharsException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidPasswordLengthException;
 import main.java.lt.mif.vu.ood.exceptions.PasswordMissingUppercaseLetterException;
 import main.java.lt.mif.vu.ood.validations.PasswordValidator;
 import main.java.lt.mif.vu.ood.validations.PasswordValidatorImpl;
-import main.ood.domain.Party;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

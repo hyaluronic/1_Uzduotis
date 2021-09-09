@@ -1,12 +1,12 @@
 package test.java.lt.mif.vu.ood;
 
+import main.java.lt.mif.vu.ood.domain.Party;
 import main.java.lt.mif.vu.ood.exceptions.InvalidPhoneNumberCharsException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidPhoneNumberLenghtException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidPhoneNumberPrefixException;
 import main.java.lt.mif.vu.ood.validations.PhoneNumberValidator;
 import main.java.lt.mif.vu.ood.validations.PhoneNumberValidatorImpl;
 import main.java.lt.mif.vu.ood.validations.ValidationRule;
-import main.ood.domain.Party;
 import org.junit.jupiter.api.Test;
 
 import static main.java.lt.mif.vu.ood.utils.PhoneNumberUtils.changePhoneNumberPrefix;
