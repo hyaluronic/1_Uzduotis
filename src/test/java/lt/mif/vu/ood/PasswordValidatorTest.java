@@ -6,10 +6,9 @@ import main.java.lt.mif.vu.ood.exceptions.InvalidPasswordLengthException;
 import main.java.lt.mif.vu.ood.exceptions.PasswordMissingUppercaseLetterException;
 import main.java.lt.mif.vu.ood.validations.PasswordValidator;
 import main.java.lt.mif.vu.ood.validations.PasswordValidatorImpl;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PasswordValidatorTest {
 
@@ -17,28 +16,28 @@ public class PasswordValidatorTest {
     private static final PasswordValidator passwordValidator = new PasswordValidatorImpl();
 
     @Test
-    void validPassword() {
+    public void validPassword() {
         party.password = "123456Aa!@#";
         assertDoesNotThrow(() -> passwordValidator.validatePasswordLength(party.password));
         assertDoesNotThrow(() -> passwordValidator.validatePasswordUppercaseLetters(party.password));
         assertDoesNotThrow(() -> passwordValidator.validatePasswordSpecialCharacters(party.password));
     }
 
-    @Test
-    void invalidPasswordLength() {
+    @Test(expected = InvalidPasswordLengthException.class)
+    public void invalidPasswordLength() {
         party.password = "1Aa!";
-        assertThrows(InvalidPasswordLengthException.class, () -> passwordValidator.validatePasswordLength(party.password));
+        passwordValidator.validatePasswordLength(party.password);
     }
 
-    @Test
-    void invalidPasswordNoUppercase() {
+    @Test(expected = PasswordMissingUppercaseLetterException.class)
+    public void invalidPasswordNoUppercase() {
         party.password = "1@aaaaaaaaa";
-        assertThrows(PasswordMissingUppercaseLetterException.class, () -> passwordValidator.validatePasswordUppercaseLetters(party.password));
+        passwordValidator.validatePasswordUppercaseLetters(party.password);
     }
 
-    @Test
-    void invalidPasswordNoSpecialSymbols() {
+    @Test(expected = InvalidPasswordCharsException.class)
+    public void invalidPasswordNoSpecialSymbols() {
         party.password = "123456Aaa";
-        assertThrows(InvalidPasswordCharsException.class, () -> passwordValidator.validatePasswordSpecialCharacters(party.password));
+        passwordValidator.validatePasswordSpecialCharacters(party.password);
     }
 }

@@ -6,10 +6,9 @@ import main.java.lt.mif.vu.ood.exceptions.InvalidEmailCharsException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidEmailDomainException;
 import main.java.lt.mif.vu.ood.validations.EmailValidator;
 import main.java.lt.mif.vu.ood.validations.EmailValidatorImpl;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EmailValidatorTest {
 
@@ -17,28 +16,28 @@ public class EmailValidatorTest {
     private static final EmailValidator emailValidator = new EmailValidatorImpl();
 
     @Test
-    void validEmail() {
+    public void validEmail() {
         party.email = "d@d.com";
         assertDoesNotThrow(() -> emailValidator.validateEmailEtaSign(party.email));
         assertDoesNotThrow(() -> emailValidator.validateEmailSpecialChars(party.email));
         assertDoesNotThrow(() -> emailValidator.validateEmailDomain(party.email));
     }
 
-    @Test
-    void invalidEmailNoEta() {
+    @Test(expected = EmailMissingEtaSignException.class)
+    public void invalidEmailNoEta() {
         party.password = "dd.com";
-        assertThrows(EmailMissingEtaSignException.class, () -> emailValidator.validateEmailEtaSign(party.email));
+        emailValidator.validateEmailEtaSign(party.email);
     }
 
-    @Test
-    void invalidEmailSpecialChars() {
+    @Test(expected = InvalidEmailCharsException.class)
+    public void invalidEmailSpecialChars() {
         party.password = "[]@[].com";
-        assertThrows(InvalidEmailCharsException.class, () -> emailValidator.validateEmailSpecialChars(party.email));
+        emailValidator.validateEmailSpecialChars(party.email);
     }
 
-    @Test
-    void invalidEmailDomain() {
+    @Test(expected = InvalidEmailDomainException.class)
+    public void invalidEmailDomain() {
         party.password = "1Aa!";
-        assertThrows(InvalidEmailDomainException.class, () -> emailValidator.validateEmailDomain(party.email));
+        emailValidator.validateEmailDomain(party.email);
     }
 }
