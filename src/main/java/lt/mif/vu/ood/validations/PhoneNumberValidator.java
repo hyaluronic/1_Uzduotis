@@ -1,20 +1,13 @@
 package main.java.lt.mif.vu.ood.validations;
 
-import java.util.HashMap;
-import java.util.Map;
+import static main.java.lt.mif.vu.ood.validations.ValidationConstants.DEFAULT_LENGTH;
+import static main.java.lt.mif.vu.ood.validations.ValidationConstants.DEFAULT_PREFIX;
 
 public interface PhoneNumberValidator {
-    default void validatePhoneNumberPrefix(String phoneNumber){
-        validatePhoneNumberPrefix(phoneNumber, null);
+
+    default void validate(String phoneNumber){
+        validate(phoneNumber, new ValidationRule(DEFAULT_PREFIX, DEFAULT_LENGTH));
     }
 
-    void validatePhoneNumberPrefix(String phoneNumber, ValidationRule s);
-
-    default void validatePhoneNumberLength(String phoneNumber){
-        validatePhoneNumberLength(phoneNumber, null);
-    }
-
-    void validatePhoneNumberLength(String phoneNumber, ValidationRule s);
-
-    void validatePhoneNumberSpecialCharacters(String phoneNumber);
+    void validate(String phoneNumber, ValidationRule validationRule);
 }

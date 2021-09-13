@@ -1,6 +1,5 @@
 package test.java.lt.mif.vu.ood;
 
-import main.java.lt.mif.vu.ood.domain.Party;
 import main.java.lt.mif.vu.ood.exceptions.EmailMissingEtaSignException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidEmailCharsException;
 import main.java.lt.mif.vu.ood.exceptions.InvalidEmailDomainException;
@@ -12,32 +11,29 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class EmailValidatorTest {
 
-    private static final Party party = new Party();
     private static final EmailValidator emailValidator = new EmailValidatorImpl();
 
     @Test
     public void validEmail() {
-        party.email = "d@d.com";
-        assertDoesNotThrow(() -> emailValidator.validateEmailEtaSign(party.email));
-        assertDoesNotThrow(() -> emailValidator.validateEmailSpecialChars(party.email));
-        assertDoesNotThrow(() -> emailValidator.validateEmailDomain(party.email));
+        String email = "d@d.com";
+        assertDoesNotThrow(() -> emailValidator.validate(email));
     }
 
     @Test(expected = EmailMissingEtaSignException.class)
     public void invalidEmailNoEta() {
-        party.password = "dd.com";
-        emailValidator.validateEmailEtaSign(party.email);
+        String email = "dd.com";
+        emailValidator.validate(email);
     }
 
     @Test(expected = InvalidEmailCharsException.class)
     public void invalidEmailSpecialChars() {
-        party.password = "[]@[].com";
-        emailValidator.validateEmailSpecialChars(party.email);
+        String email = "[]@[].com";
+        emailValidator.validate(email);
     }
 
     @Test(expected = InvalidEmailDomainException.class)
     public void invalidEmailDomain() {
-        party.password = "1Aa!";
-        emailValidator.validateEmailDomain(party.email);
+        String email = "dd@dd.1a-";
+        emailValidator.validate(email);
     }
 }

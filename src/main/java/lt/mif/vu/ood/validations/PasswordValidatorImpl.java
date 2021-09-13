@@ -1,18 +1,11 @@
 package main.java.lt.mif.vu.ood.validations;
 
+import java.util.List;
+
 public class PasswordValidatorImpl implements PasswordValidator {
-    @Override
-    public void validatePasswordLength(String password) {
-        throw new UnsupportedOperationException();
-    }
 
     @Override
-    public void validatePasswordUppercaseLetters(String password) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void validatePasswordSpecialCharacters(String password) {
+    public void validate(String password, List<String> spacialChars) {
         throw new UnsupportedOperationException();
     }
 }

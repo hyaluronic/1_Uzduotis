@@ -1,6 +1,12 @@
 package main.java.lt.mif.vu.ood.validations;
 
 public class ValidationRule {
-    public String prefix;
-    public int length;
+
+    private final String prefix;
+    private final int length;
+
+    public ValidationRule(String prefix, int length) {
+        this.prefix = prefix;
+        this.length= length;
+    }
 }
