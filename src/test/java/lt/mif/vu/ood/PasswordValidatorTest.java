@@ -26,7 +26,8 @@ public class PasswordValidatorTest {
     public void validPasswordWithCustomSpecialChars() {
         String password = "123456Aa%^+";
         List<String> specialChars = Arrays.asList("!", "+");
-        assertDoesNotThrow(() -> passwordValidator.validate(password, specialChars));
+        passwordValidator.setSpecialChars(specialChars);
+        assertDoesNotThrow(() -> passwordValidator.validate(password));
     }
 
     @Test(expected = InvalidPasswordLengthException.class)

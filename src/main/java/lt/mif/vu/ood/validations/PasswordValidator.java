@@ -6,10 +6,7 @@ import static main.java.lt.mif.vu.ood.validations.ValidationConstants.DEFAULT_SP
 
 public interface PasswordValidator {
 
-    default void validate(String password) {
-        validate(password, DEFAULT_SPECIAL_CHARS);
-    }
+    void setSpecialChars(List<String> specialChars);
 
-    void validate(String password, List<String> spacialChars);
-
+    void validate(String password);
 }

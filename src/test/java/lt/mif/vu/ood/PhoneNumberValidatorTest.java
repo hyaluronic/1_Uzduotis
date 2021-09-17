@@ -28,9 +28,10 @@ public class PhoneNumberValidatorTest {
 
     @Test
     public void phoneNumberValidWithCustomRule() {
-        ValidationRule validationRule = new ValidationRule("+310", 7);
         String phoneNumber = "+3106123";
-        assertDoesNotThrow(() -> phoneNumberValidator.validate(phoneNumber, validationRule));
+        ValidationRule validationRule = new ValidationRule("+310", 7);
+        phoneNumberValidator.setValidationRule(validationRule);
+        assertDoesNotThrow(() -> phoneNumberValidator.validate(phoneNumber));
     }
 
     @Test(expected = InvalidPhoneNumberPrefixException.class)
