@@ -1,10 +1,5 @@
 package test.java.lt.mif.vu.ood;
 
-import main.java.lt.mif.vu.ood.exceptions.InvalidPasswordCharsException;
-import main.java.lt.mif.vu.ood.exceptions.InvalidPasswordLengthException;
-import main.java.lt.mif.vu.ood.exceptions.PasswordMissingUppercaseLetterException;
-import main.java.lt.mif.vu.ood.validations.PasswordValidator;
-import main.java.lt.mif.vu.ood.validations.PasswordValidatorImpl;
 import org.junit.Test;
 
 import java.util.Arrays;

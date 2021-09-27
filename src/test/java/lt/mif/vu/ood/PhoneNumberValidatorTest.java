@@ -1,11 +1,5 @@
 package test.java.lt.mif.vu.ood;
 
-import main.java.lt.mif.vu.ood.exceptions.InvalidPhoneNumberCharsException;
-import main.java.lt.mif.vu.ood.exceptions.InvalidPhoneNumberLengthException;
-import main.java.lt.mif.vu.ood.exceptions.InvalidPhoneNumberPrefixException;
-import main.java.lt.mif.vu.ood.validations.PhoneNumberValidator;
-import main.java.lt.mif.vu.ood.validations.PhoneNumberValidatorImpl;
-import main.java.lt.mif.vu.ood.validations.ValidationRule;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
